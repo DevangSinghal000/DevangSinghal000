@@ -1,0 +1,21 @@
+def getcofactor(m, i, j):
+    return [row[: j] + row[j+1:] for row in (m[: i] + m[i+1:])]
+def determinantOfMatrix(mat):
+    if(len(mat) == 2):
+        value = mat[0][0] * mat[1][1] - mat[1][0] * mat[0][1]
+        return value
+    Sum = 0
+    for current_column in range(len(mat)):
+        sign = (-1) ** (current_column)
+        sub_det = determinantOfMatrix(getcofactor(mat, 0, current_column))
+        Sum += (sign * mat[0][current_column] * sub_det)
+    return Sum
+r = int(input("Enter the rows: "))
+c = int(input("Enter the columns: "))
+print("Enter Matrix 1:")
+mat = [[int(input()) for i in range(c)] for i in range(r)]
+print("Matrix 1 is: ")
+for n in mat:
+     print(n)       
+print('Determinant of the matrix is :', determinantOfMatrix(mat))
+ 
