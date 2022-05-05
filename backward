@@ -1,0 +1,51 @@
+def con(u, n):
+ 
+    p = u;
+    for i in range(1, n):
+        p = p*(u + i);
+    return p;
+ 
+def fact(n):
+    f = 1;
+    for i in range(2,n+1):
+        f *= i;
+    return f;
+
+n = int(input("Enter number of entries: "))
+x = []    
+y = [[0 for i in range(n)]
+		for j in range(n)]
+
+for i in range(n):
+	a=int(input())
+	x.append(a)
+print("value of y")
+for i in range(n):
+	y[i][0]=float(input())
+
+
+ 
+
+for i in range(1, n):
+    for j in range(n - 1,i+1,-1):
+        y[j][i] = y[j][i - 1] - y[j-1][i - 1];
+ 
+
+for i in range(n):
+    print(x[i], end= "\t"  );
+    for j in range(i+1):
+        print(y[i][j],end= "\t" );
+    print("");
+ 
+v = float(input("Enter number of entries: "))
+ 
+sum = y[n-1][0];
+u = (v - x[n-1]) / (x[1] - x[0]);
+for i in range(1,n):
+    sum = sum + (con(u, i) * y[n-1][i]) / fact(i);
+ 
+print("\nValue at", v,
+      "is", round(sum, 5));
+ 
+
+
