@@ -1,0 +1,20 @@
+def func( x ):
+	return 2*x**3-2*x-5
+
+def derivFunc( x ):
+	return 6*x**2-2
+
+
+def newtonRaphson( x ):
+	h = func(x) / derivFunc(x)
+	while abs(h) >= 0.0001:
+		h = func(x)/derivFunc(x)
+		
+	
+		x = x - h
+	
+	print("The value of the root is : ",
+							"%.4f"% x)
+
+x0 = -5
+newtonRaphson(x0)
